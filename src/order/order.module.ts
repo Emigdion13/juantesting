@@ -18,7 +18,7 @@ import { MailerModule } from '@nestjs-modules/mailer';
     SharedModule,
     LinkModule,
     ProductModule,
-    MailerModule.forRoot({
+    /*MailerModule.forRoot({
       transport: {
         host: 'mailhog', //host.docker.internal:8080
         port: 1025
@@ -26,7 +26,7 @@ import { MailerModule } from '@nestjs-modules/mailer';
       defaults: {
         from: 'no-reply@example.com'
       }
-    }),
+    }),*/
   ],
   controllers: [OrderController],
   providers: [OrderService, OrderItemService, OrderListener]

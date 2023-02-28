@@ -9,7 +9,7 @@ export class OrderListener {
 
     constructor(
         private redisService: RedisService,
-        private mailerService: MailerService
+        //private mailerService: MailerService
     ){}
 
     @OnEvent('order.completed')
@@ -20,7 +20,7 @@ export class OrderListener {
         const client = this.redisService.getClient();
         client.zincrby('rankings', order.ambassador_revenue, order.user.name);
 
-        await this.mailerService.sendMail({
+        /*await this.mailerService.sendMail({
 
             to: 'admin@admin.com',
             subject: 'An order has been completed',
@@ -32,7 +32,7 @@ export class OrderListener {
             to: order.ambassador_email,
             subject: 'An order has been completed',
             html: `Order #${order.id} with total of 50 has been completed! from link asd`
-        });
+        });*/
 
     }
 

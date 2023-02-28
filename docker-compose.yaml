@@ -1,40 +1,46 @@
 version: '3.9'
 services:
-  backend: 
+  backend:
+    image : testingjuancontainer.azurecr.io/juantesting
+    container_name: backend
     build: .
     ports:
-      - 8000:3000
-    volumes:
-      - .:/app
+      - 80:80
+    #volumes:
+    #  - .:/app
     depends_on:
       - db
+      - redis
 
   db: 
     image: mysql:5.7.22
     restart: unless-stopped
+    container_name: db
     environment:
       MYSQL_DATABASE: ambassador
       MYSQL_USER: root
       MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
     command: --max_allowed_packet=32505856      # Set max_allowed_packet to 256M (or any other value)
-    volumes:
-      - .dbdata:/var/lib/mysql
+    #volumes:
+    #  - .dbdata:/var/lib/mysql
     ports:
-      - 33066:3306
+      - 3306:3306
 
   redis:
     image: redis
+    container_name: redis
     restart: unless-stopped
     ports: 
       - 6379:6379
     #volumes:
     #  - .redis:/data
 
-  mailhog:
-    image: mailhog/mailhog
-    logging:
-      driver: 'none'  # disable saving logs
-    ports:
-      - 1025:1025 # smtp server
-      - 8025:8025 # web ui
+  #mailhog:
+  #  image: mailhog/mailhog
+  #  container_name: mailhog
+  #  logging:
+  #    driver: 'none'  # disable saving logs
+  #  ports:
+  #    - 1025:1025 # smtp server
+  #    - 8025:8025 # web ui

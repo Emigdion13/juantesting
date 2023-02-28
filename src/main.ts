@@ -13,6 +13,6 @@ async function bootstrap() {
     credentials: true // the cookie will be stored in the frontend
 
   });
-  await app.listen(process.env.PORT || 3000);
+  await app.listen(process.env.PORT || 80);
 }
 bootstrap();
