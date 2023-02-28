@@ -28,5 +28,13 @@ services:
     restart: unless-stopped
     ports: 
       - 6379:6379
-    volumes:
-      - .redis:/data
+    #volumes:
+    #  - .redis:/data
+
+  mailhog:
+    image: mailhog/mailhog
+    logging:
+      driver: 'none'  # disable saving logs
+    ports:
+      - 1025:1025 # smtp server
+      - 8025:8025 # web ui
