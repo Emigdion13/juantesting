@@ -9,10 +9,10 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
   app.use(cookieParser());
   app.enableCors({
-    origin: ['htttp://localhost:4200', 'https://localhost:4300', 'https://localhost:5000'],
+    origin: ['*'],
     credentials: true // the cookie will be stored in the frontend
 
   });
-  await app.listen(3000);
+  await app.listen(process.env.PORT || 3000);
 }
 bootstrap();
