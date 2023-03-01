@@ -14,6 +14,7 @@ variables:
   imageRepository: 'juantesting'
   containerRegistry: 'juanapicontainerregistry.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
+
   tag: '$(Build.BuildId)'
 
   # Agent VM image name
@@ -28,11 +29,11 @@ stages:
     pool:
       vmImage: $(vmImageName)
     steps:
-    - task: Docker@2
-      displayName: Build and push an image to container registry
+    - task: DockerCompose@0
       inputs:
-        command: buildAndPush
-        repository: $(imageRepository)
-        dockerfile: $(dockerfilePath)
-        containerRegistry: $(dockerRegistryServiceConnection)
-        tags: 'latest'
+        containerregistrytype: 'Container Registry'
+        dockerRegistryEndpoint: 'juanApiContainerRegistry'
+        dockerComposeFile: '**/docker-compose.yml'
+        action: 'Run a Docker Compose command'
+        dockerComposeCommand: 'docker compose up'
+
