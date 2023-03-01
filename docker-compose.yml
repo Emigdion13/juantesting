@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   backend:
-    image : testingjuancontainer.azurecr.io/juantesting
+    image : myarcnamejenc.azurecr.io/juantesting
     container_name: backend
     build: .
     ports:
@@ -21,7 +21,7 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
-    command: --max_allowed_packet=32505856      # Set max_allowed_packet to 256M (or any other value)
+    #command: --max_allowed_packet=32505856      # Set max_allowed_packet to 256M (or any other value)
     #volumes:
     #  - .dbdata:/var/lib/mysql
     ports:
