@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   backend:
-    image : myarcnamejenc.azurecr.io/juantesting
+    image : emigdion/juantesting
     container_name: backend
     build: .
     ports:
