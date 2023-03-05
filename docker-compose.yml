@@ -22,8 +22,8 @@ services:
       MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
     #command: --max_allowed_packet=32505856      # Set max_allowed_packet to 256M (or any other value)
-    #volumes:
-    #  - .dbdata:/var/lib/mysql
+    volumes:
+      - .dbdata:/var/lib/mysql
     ports:
       - 3306:3306
 
@@ -36,11 +36,11 @@ services:
     #volumes:
     #  - .redis:/data
 
-  #mailhog:
-  #  image: mailhog/mailhog
-  #  container_name: mailhog
-  #  logging:
-  #    driver: 'none'  # disable saving logs
-  #  ports:
-  #    - 1025:1025 # smtp server
-  #    - 8025:8025 # web ui
+  mailhog:
+    image: mailhog/mailhog
+    container_name: mailhog
+    logging:
+      driver: 'none'  # disable saving logs
+    ports:
+      - 1025:1025 # smtp server
+      - 8025:8025 # web ui
