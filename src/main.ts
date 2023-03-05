@@ -9,7 +9,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
   app.use(cookieParser());
   app.enableCors({
-    origin: ['*'],
+    origin: ['http://localhost:3000', 'http://localhost:4000', 'http://138.197.58.229:80'],
     credentials: true // the cookie will be stored in the frontend
 
   });
