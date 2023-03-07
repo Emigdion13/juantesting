@@ -9,7 +9,7 @@ import { UserService } from './user.service';
 
 
 @Controller('users')
-//@UseGuards(AuthGuard)
+@UseGuards(AuthGuard)
 @UseInterceptors(ClassSerializerInterceptor)
 export class UserController {
 

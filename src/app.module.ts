@@ -25,7 +25,7 @@ import { ConfigModule } from '@nestjs/config';
     synchronize: true,
     }),
     EventEmitterModule.forRoot(),
-    ConfigModule.forRoot({
+    ConfigModule.forRoot({ //this is to load config file
       isGlobal: true,
     }),
     UserModule,
