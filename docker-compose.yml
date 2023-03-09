@@ -5,7 +5,7 @@ services:
     container_name: backend
     build: .
     ports:
-      - 80:80
+      - 3000:80
     #volumes:
     #  - .:/app
     depends_on:
